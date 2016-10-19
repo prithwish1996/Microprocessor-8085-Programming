@@ -1,17 +1,17 @@
-LDA 5000h;
-MOV B,A;
-LDA 5001h;
-MOV C,B;
-MOV D,A;
-MOV E,B;
-DCR D;
-REP: XRA A; 
-LOOP1: ADD B; 
-       DCR C;
-       JNZ LOOP1; 
-       MOV B,A; 
-       MOV C,E;
-       DCR D; 
-       JNZ REP;
-STA 5002h; 
+LDA 5000h; //Loading no. in 5000h
+MOV B,A;   //Moving B to A
+LDA 5001h;  //Loading exponent in 5001h
+MOV C,B;    //Moving B to C to calcuate the square of that no.
+MOV D,A;    //Moving A to D as a counter for outer Loop : Repeat
+MOV E,B;    //Storing Original no. into E
+DCR D;      //Decrementing D
+REP: XRA A; //Clearing the Accumulator
+LOOP1: ADD B; //Line 9 to 11 find square of the no. B
+       DCR C; //
+       JNZ LOOP1; //
+       MOV B,A; //Storing the A to B
+       MOV C,E; //Moving original No. to C
+       DCR D;  //Decrement Outer Loop
+       JNZ REP; 
+STA 5002h; // Storing in 5002h
 HLT;
