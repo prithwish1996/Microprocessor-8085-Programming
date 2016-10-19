@@ -1,0 +1,17 @@
+LDA 5000h;
+MOV B,A;
+LDA 5001h;
+MOV C,B;
+MOV D,A;
+MOV E,B;
+DCR D;
+REP: XRA A; 
+LOOP1: ADD B; 
+       DCR C;
+       JNZ LOOP1; 
+       MOV B,A; 
+       MOV C,E;
+       DCR D; 
+       JNZ REP;
+STA 5002h; 
+HLT;
